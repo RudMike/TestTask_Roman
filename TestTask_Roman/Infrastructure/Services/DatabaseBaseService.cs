@@ -59,6 +59,7 @@ namespace TestTask_Roman.Infrastructure.Services
         {
             this.ThrowIfNull(entity);
             this.ThrowIfInvalid(entity);
+            entity.Id = 0;
 
             await this.Repository.AddAsync(entity, ct)
                 .ConfigureAwait(false);
