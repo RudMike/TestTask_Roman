@@ -77,9 +77,9 @@ namespace TestTask_Roman.Infrastructure.Validators
             }
         }
 
-        private static void ValidateBirthDate(DateTime birthDate, List<ValidationResult> results)
+        private static void ValidateBirthDate(DateOnly birthDate, List<ValidationResult> results)
         {
-            if (birthDate > DateTime.Now)
+            if (birthDate > DateOnly.FromDateTime(DateTime.Now))
             {
                 results.Add(new ValidationResult("Date of birth cannot be in the future"));
             }

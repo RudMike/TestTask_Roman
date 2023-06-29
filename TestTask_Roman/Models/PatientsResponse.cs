@@ -40,7 +40,7 @@ namespace TestTask_Roman.Models
         /// <summary>
         /// Gets the birth date of the patient.
         /// </summary>
-        public DateTime BirthDate { get; init; }
+        public DateOnly BirthDate { get; init; }
 
         /// <summary>
         /// Gets the sex of the patient.

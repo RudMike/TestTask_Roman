@@ -43,7 +43,7 @@ namespace TestTask_Roman.Data.Models
         /// <summary>
         /// Gets or sets the birth date of the patient.
         /// </summary>
-        public DateTime BirthDate { get; set; }
+        public DateOnly BirthDate { get; set; }
 
         /// <summary>
         /// Gets or sets the sex of the patient.
