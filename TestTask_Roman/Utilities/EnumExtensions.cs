@@ -5,8 +5,8 @@
 // </copyright>
 //-----------------------------------------------------------------------
 
-using Microsoft.OpenApi.Extensions;
 using System.ComponentModel;
+using Microsoft.OpenApi.Extensions;
 
 namespace TestTask_Roman.Utilities
 {
