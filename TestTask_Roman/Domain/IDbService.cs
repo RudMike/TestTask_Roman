@@ -1,5 +1,5 @@
 ﻿//-----------------------------------------------------------------------
-// <copyright file="IDatabaseService.cs" company="RudMike">
+// <copyright file="IDbService.cs" company="RudMike">
 //     Author: Mike Rudnikov
 //     Copyright (c) RudMike. All rights reserved.
 // </copyright>
@@ -13,7 +13,7 @@ namespace TestTask_Roman.Domain
     /// Defines a service for performing CRUD operations on entities in a database.
     /// </summary>
     /// <typeparam name="TEntity">The type of entities being managed.</typeparam>
-    public interface IDatabaseService<TEntity>
+    public interface IDbService<TEntity>
         where TEntity : class, IEntity
     {
         /// <summary>
