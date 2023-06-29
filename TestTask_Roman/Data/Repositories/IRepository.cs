@@ -20,7 +20,6 @@ namespace TestTask_Roman.Data.Repositories
         /// <param name="entity">The entity to add.</param>
         /// <param name="ct">A cancellation token that can be used to cancel the operation.</param>
         /// <returns>A task representing the asynchronous operation.</returns>
-        /// <remarks>Id property of the entity can be ignored.</remarks>
         public Task AddAsync(TEntity entity, CancellationToken ct = default);
 
         /// <summary>
