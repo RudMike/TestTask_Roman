@@ -70,7 +70,6 @@ namespace TestTask_Roman
             _ = builder.Services.AddScoped<IEntityValidator<Patient>, PatientValidator>();
             _ = builder.Services.AddScoped<IEntityValidator<Doctor>, DoctorValidator>();
             _ = builder.Services.AddScoped<IPatientService, PatientService>();
-            _ = builder.Services.AddScoped<IDoctorService, DoctorService>();
         }
 
         private static void ConfigureMiddleware(WebApplication app)
