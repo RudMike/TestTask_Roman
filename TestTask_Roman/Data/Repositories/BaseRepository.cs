@@ -72,7 +72,7 @@ namespace TestTask_Roman.Data.Repositories
         public async Task<TEntity?> GetByIdAsync(int id, CancellationToken ct = default)
         {
             return await this.DbSet
-                .FindAsync(id, ct)
+                .FindAsync(new object?[] { id }, ct)
                 .ConfigureAwait(false);
         }
 
