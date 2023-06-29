@@ -61,8 +61,13 @@ namespace TestTask_Roman.Data.Configurations
                 .HasColumnName(DbObjectConstants.Address)
                 .HasMaxLength(AddressMaxLength);
 
+            var dateConverter = new ValueConverter<DateOnly, DateTime>(
+                dateOnly => dateOnly.ToDateTime(TimeOnly.MinValue),
+                dateTime => DateOnly.FromDateTime(DateTime.Now));
+
             _ = builder.Property(patient => patient.BirthDate)
                 .HasColumnName(DbObjectConstants.BirthDate)
+                .HasConversion(dateConverter)
                 .HasPrecision(0);
 
             var sexConverter = new ValueConverter<Sex, string>(
