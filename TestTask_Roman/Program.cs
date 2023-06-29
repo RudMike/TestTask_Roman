@@ -69,7 +69,6 @@ namespace TestTask_Roman
             _ = builder.Services.AddScoped(typeof(IDatabaseService<>), typeof(DbBaseService<>));
             _ = builder.Services.AddScoped<IEntityValidator<Patient>, PatientValidator>();
             _ = builder.Services.AddScoped<IEntityValidator<Doctor>, DoctorValidator>();
-            _ = builder.Services.AddScoped<IDoctorRepository, DoctorsRepository>();
             _ = builder.Services.AddScoped<IPatientService, PatientService>();
             _ = builder.Services.AddScoped<IDoctorService, DoctorService>();
         }
