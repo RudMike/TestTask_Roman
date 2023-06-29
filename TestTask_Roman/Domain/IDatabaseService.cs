@@ -5,6 +5,8 @@
 // </copyright>
 //-----------------------------------------------------------------------
 
+using TestTask_Roman.Data;
+
 namespace TestTask_Roman.Domain
 {
     /// <summary>
@@ -12,7 +14,7 @@ namespace TestTask_Roman.Domain
     /// </summary>
     /// <typeparam name="TEntity">The type of entities being managed.</typeparam>
     public interface IDatabaseService<TEntity>
-        where TEntity : class
+        where TEntity : class, IEntity
     {
         /// <summary>
         /// Adds a new entity to the database.

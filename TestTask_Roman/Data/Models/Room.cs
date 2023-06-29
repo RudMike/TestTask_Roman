@@ -10,7 +10,7 @@ namespace TestTask_Roman.Data.Models
     /// <summary>
     /// Represents a room in a medical building.
     /// </summary>
-    public class Room
+    public class Room : IEntity
     {
         /// <summary>
         /// Gets or sets the number of the room.

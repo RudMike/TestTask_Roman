@@ -13,7 +13,7 @@ namespace TestTask_Roman.Data.Models
     /// <summary>
     /// Represents a patient in the system.
     /// </summary>
-    public class Patient
+    public class Patient : IEntity
     {
         /// <summary>
         /// Gets or sets the unique identifier for the patient.

@@ -10,7 +10,7 @@ namespace TestTask_Roman.Data.Models
     /// <summary>
     /// Represents a medical specialization of a doctor.
     /// </summary>
-    public class Specialization
+    public class Specialization : IEntity
     {
         /// <summary>
         /// Gets or sets the unique identifier for the specialization.

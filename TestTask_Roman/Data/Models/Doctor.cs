@@ -12,7 +12,7 @@ namespace TestTask_Roman.Data.Models
     /// <summary>
     /// Represents a doctor in the system.
     /// </summary>
-    public class Doctor
+    public class Doctor : IEntity
     {
         /// <summary>
         /// Gets or sets the unique identifier for the doctor.

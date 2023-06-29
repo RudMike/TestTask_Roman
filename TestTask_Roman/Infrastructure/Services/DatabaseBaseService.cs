@@ -6,6 +6,7 @@
 //-----------------------------------------------------------------------
 
 using System.ComponentModel.DataAnnotations;
+using TestTask_Roman.Data;
 using TestTask_Roman.Data.Contexts;
 using TestTask_Roman.Data.Repositories;
 using TestTask_Roman.Domain;
@@ -19,7 +20,7 @@ namespace TestTask_Roman.Infrastructure.Services
     /// </summary>
     /// <typeparam name="TEntity">The type of entity managed by the service.</typeparam>
     public class DatabaseBaseService<TEntity> : IDatabaseService<TEntity>
-        where TEntity : class
+        where TEntity : class, IEntity
     {
         private readonly IUnitOfWork<MedicalDbContext> unitOfWork;
         private readonly IRepository<TEntity> repository;

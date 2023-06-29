@@ -15,7 +15,7 @@ namespace TestTask_Roman.Data.Repositories
     /// </summary>
     /// <typeparam name="TEntity">The type of entity that the repository interacts with.</typeparam>
     public class BaseRepository<TEntity> : IRepository<TEntity>
-        where TEntity : class
+        where TEntity : class, IEntity
     {
         private readonly DbContextFactory dbContextFactory;
         private DbSet<TEntity> dbSet = null!;

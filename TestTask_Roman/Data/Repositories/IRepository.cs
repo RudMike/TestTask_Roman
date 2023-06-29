@@ -12,7 +12,7 @@ namespace TestTask_Roman.Data.Repositories
     /// </summary>
     /// <typeparam name="TEntity">The type of entity.</typeparam>
     public interface IRepository<TEntity>
-        where TEntity : class
+        where TEntity : class, IEntity
     {
         /// <summary>
         /// Adds a new entity to the repository.
