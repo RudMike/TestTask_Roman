@@ -1,5 +1,5 @@
 ﻿//-----------------------------------------------------------------------
-// <copyright file="DatabaseBaseService.cs" company="RudMike">
+// <copyright file="DbBaseService.cs" company="RudMike">
 //     Author: Mike Rudnikov
 //     Copyright (c) RudMike. All rights reserved.
 // </copyright>

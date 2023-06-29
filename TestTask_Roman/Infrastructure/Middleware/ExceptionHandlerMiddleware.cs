@@ -5,8 +5,8 @@
 // </copyright>
 //-----------------------------------------------------------------------
 
-using Microsoft.EntityFrameworkCore;
 using System.ComponentModel.DataAnnotations;
+using Microsoft.EntityFrameworkCore;
 using TestTask_Roman.Infrastructure.Exceptions;
 
 namespace TestTask_Roman.Infrastructure.Middleware
