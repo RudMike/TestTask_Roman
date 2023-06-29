@@ -55,6 +55,13 @@ namespace TestTask_Roman
                     },
                 });
             });
+
+            builder.Services.AddDbContext<MedicalDbContext>(options =>
+            {
+                var connectionString = builder.Configuration.GetConnectionString("MsSql");
+                options.UseSqlServer(connectionString);
+            });
+
             _ = builder.Services.AddScoped<Func<MedicalDbContext>>(provider => () => provider.GetService<MedicalDbContext>()!);
             _ = builder.Services.AddScoped<DbContextFactory>();
             _ = builder.Services.AddScoped(typeof(IUnitOfWork<>), typeof(UnitOfWork<>));
