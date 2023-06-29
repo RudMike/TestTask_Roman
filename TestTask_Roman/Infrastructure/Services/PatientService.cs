@@ -18,7 +18,7 @@ namespace TestTask_Roman.Infrastructure.Services
     /// <summary>
     /// Provides services for managing <see cref="Patient"/> entities.
     /// </summary>
-    public class PatientService : DatabaseBaseService<Patient>, IPatientService
+    public class PatientService : DbBaseService<Patient>, IPatientService
     {
         private readonly IPatientRepository patientRepository;
 

@@ -16,10 +16,10 @@ using TestTask_Roman.Infrastructure.Validators;
 namespace TestTask_Roman.Infrastructure.Services
 {
     /// <summary>
-    /// A base implementation of the <see cref="IDatabaseService{TEntity}"/> interface that provides common CRUD operations for database entities.
+    /// A base implementation of the <see cref="IDbService{TEntity}"/> interface that provides common CRUD operations for database entities.
     /// </summary>
     /// <typeparam name="TEntity">The type of entity managed by the service.</typeparam>
-    public class DatabaseBaseService<TEntity> : IDatabaseService<TEntity>
+    public class DbBaseService<TEntity> : IDbService<TEntity>
         where TEntity : class, IEntity
     {
         private readonly IUnitOfWork<MedicalDbContext> unitOfWork;
@@ -27,12 +27,12 @@ namespace TestTask_Roman.Infrastructure.Services
         private readonly IEntityValidator<TEntity> validator;
 
         /// <summary>
-        /// Initializes a new instance of the <see cref="DatabaseBaseService{TEntity}"/> class with the specified unit of work, repository, and entity validator.
+        /// Initializes a new instance of the <see cref="DbBaseService{TEntity}"/> class with the specified unit of work, repository, and entity validator.
         /// </summary>
         /// <param name="unitOfWork">The unit of work used by the service.</param>
         /// <param name="repository">The repository used by the service.</param>
         /// <param name="validator">The entity validator used by the service.</param>
-        public DatabaseBaseService(IUnitOfWork<MedicalDbContext> unitOfWork, IRepository<TEntity> repository, IEntityValidator<TEntity> validator)
+        public DbBaseService(IUnitOfWork<MedicalDbContext> unitOfWork, IRepository<TEntity> repository, IEntityValidator<TEntity> validator)
         {
             this.unitOfWork = unitOfWork;
             this.repository = repository;
