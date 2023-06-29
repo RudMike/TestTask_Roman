@@ -18,7 +18,7 @@ namespace TestTask_Roman.Data.Repositories
     /// <summary>
     /// Represents a repository for managing <see cref="Doctor"/> entities.
     /// </summary>
-    public class DoctorsRepository : BaseRepository<Doctor>, IDoctorRepository
+    public class DoctorsRepository : BaseRepository<Doctor>, IReportRepository<DoctorsResponse>
     {
         /// <summary>
         /// Initializes a new instance of the <see cref="DoctorsRepository"/> class with the specified database context factory.
@@ -30,7 +30,7 @@ namespace TestTask_Roman.Data.Repositories
         }
 
         /// <inheritdoc/>
-        public Task<PagedList<DoctorsResponse>> GetAllAsync(string? sortColumn, string? sortOrder, int page, int pageSize, CancellationToken ct = default)
+        public Task<PagedList<DoctorsResponse>> GetReportAsync(string? sortColumn, string? sortOrder, int page, int pageSize, CancellationToken ct = default)
         {
             var query = this.DbSet.AsQueryable();
             var keySelector = GetSortProperty(sortColumn);
