@@ -12,6 +12,7 @@ using TestTask_Roman.Data.Models;
 using TestTask_Roman.Data.Repositories;
 using TestTask_Roman.Domain;
 using TestTask_Roman.Infrastructure;
+using TestTask_Roman.Infrastructure.Mapping;
 using TestTask_Roman.Infrastructure.Middleware;
 using TestTask_Roman.Infrastructure.Repositories;
 using TestTask_Roman.Infrastructure.Services;
@@ -68,6 +69,10 @@ namespace TestTask_Roman
             _ = builder.Services.AddScoped(typeof(IRepository<>), typeof(BaseRepository<>));
             _ = builder.Services.AddScoped(typeof(IDbService<>), typeof(DbBaseService<>));
             _ = builder.Services.AddScoped(typeof(IReportableDbService<,>), typeof(ReportableDbService<,>));
+            _ = builder.Services.AddScoped(typeof(IBaseService<,>), typeof(BaseService<,>));
+            _ = builder.Services.AddScoped(typeof(IReportableService<,,>), typeof(ReportableService<,,>));
+            _ = builder.Services.AddScoped<IMapper<DoctorRequest, Doctor>, DoctorRequestToEntityMapper>();
+            _ = builder.Services.AddScoped<IMapper<PatientRequest, Patient>, PatientRequestToEntityMapper>();
             _ = builder.Services.AddScoped<IReportRepository<DoctorsResponse>, DoctorsRepository>();
             _ = builder.Services.AddScoped<IReportRepository<PatientsResponse>, PatientsRepository>();
         }
