@@ -28,7 +28,14 @@ namespace TestTask_Roman.Data.Configurations
 
             _ = builder.Property(specialization => specialization.Title)
                 .HasColumnName(DbObjectConstants.Title)
-                .HasMaxLength(50);
+            .HasMaxLength(50);
+
+            _ = builder.HasData(
+                new Specialization { Id = 1, Title = "Терапевт", },
+                new Specialization { Id = 2, Title = "Хирург", },
+                new Specialization { Id = 3, Title = "Травматолог", },
+                new Specialization { Id = 4, Title = "Отоларинголог", },
+                new Specialization { Id = 5, Title = "Дерматолог", });
         }
     }
 }
