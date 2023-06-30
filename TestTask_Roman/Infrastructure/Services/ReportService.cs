@@ -1,5 +1,5 @@
 ﻿//-----------------------------------------------------------------------
-// <copyright file="ReportableService.cs" company="RudMike">
+// <copyright file="ReportService.cs" company="RudMike">
 //     Author: Mike Rudnikov
 //     Copyright (c) RudMike. All rights reserved.
 // </copyright>
@@ -21,19 +21,19 @@ namespace TestTask_Roman.Infrastructure.Services
     /// <typeparam name="TEntity">The type of entity that the service operates on.</typeparam>
     /// <typeparam name="TReport">The type of report that the service generates.</typeparam>
     /// <typeparam name="TRequest">The type of DTOs that are used to create, update, and delete entities.</typeparam>
-    public class ReportableService<TEntity, TReport, TRequest> : BaseService<TEntity, TRequest>, IReportService<TEntity, TReport, TRequest>
+    public class ReportService<TEntity, TReport, TRequest> : BaseService<TEntity, TRequest>, IReportService<TEntity, TReport, TRequest>
         where TEntity : class, IEntity
     {
         private readonly IReportRepository<TReport> reportRepository;
 
         /// <summary>
-        /// Initializes a new instance of the <see cref="ReportableService{TEntity,TReport,TRequest}"/> class with the specified dependencies.
+        /// Initializes a new instance of the <see cref="ReportService{TEntity,TReport,TRequest}"/> class with the specified dependencies.
         /// </summary>
         /// <param name="unitOfWork">The unit of work used to interact with the database.</param>
         /// <param name="repository">The repository used to interact with the entity type.</param>
         /// <param name="reportRepository">The repository used to generate reports.</param>
         /// <param name="mapper">The mapper used to map between DTOs and entities.</param>
-        public ReportableService(IUnitOfWork<MedicalDbContext> unitOfWork, IRepository<TEntity> repository, IReportRepository<TReport> reportRepository, IMapper<TRequest, TEntity> mapper)
+        public ReportService(IUnitOfWork<MedicalDbContext> unitOfWork, IRepository<TEntity> repository, IReportRepository<TReport> reportRepository, IMapper<TRequest, TEntity> mapper)
             : base(unitOfWork, repository, mapper)
         {
             this.reportRepository = reportRepository;

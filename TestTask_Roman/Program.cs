@@ -69,7 +69,7 @@ namespace TestTask_Roman
             _ = builder.Services.AddScoped(typeof(IUnitOfWork<>), typeof(UnitOfWork<>));
             _ = builder.Services.AddScoped(typeof(IRepository<>), typeof(BaseRepository<>));
             _ = builder.Services.AddScoped(typeof(IBaseService<,>), typeof(BaseService<,>));
-            _ = builder.Services.AddScoped(typeof(IReportService<,,>), typeof(ReportableService<,,>));
+            _ = builder.Services.AddScoped(typeof(IReportService<,,>), typeof(ReportService<,,>));
             _ = builder.Services.AddScoped<IMapper<DoctorRequest, Doctor>, DoctorRequestToEntityMapper>();
             _ = builder.Services.AddScoped<IMapper<PatientRequest, Patient>, PatientRequestToEntityMapper>();
             _ = builder.Services.AddScoped<IReportRepository<DoctorsResponse>, DoctorsRepository>();
