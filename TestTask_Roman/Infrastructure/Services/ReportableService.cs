@@ -55,7 +55,7 @@ namespace TestTask_Roman.Infrastructure.Services
                 page = RoutingConstants.PageDefault;
             }
 
-            if (page == null || pageSize < 1)
+            if (pageSize == null || pageSize < 1)
             {
                 pageSize = RoutingConstants.PageSizeDefault;
             }
