@@ -17,6 +17,7 @@ using TestTask_Roman.Infrastructure.Middleware;
 using TestTask_Roman.Infrastructure.Repositories;
 using TestTask_Roman.Infrastructure.Services;
 using TestTask_Roman.Models;
+using TestTask_Roman.Validators;
 
 namespace TestTask_Roman
 {
@@ -73,6 +74,7 @@ namespace TestTask_Roman
             _ = builder.Services.AddScoped<IMapper<PatientRequest, Patient>, PatientRequestToEntityMapper>();
             _ = builder.Services.AddScoped<IReportRepository<DoctorsResponse>, DoctorsRepository>();
             _ = builder.Services.AddScoped<IReportRepository<PatientsResponse>, PatientsRepository>();
+            _ = builder.Services.AddScoped<DoctorControllerRequestValidator>();
         }
 
         private static void ConfigureMiddleware(WebApplication app)
