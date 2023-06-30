@@ -6,6 +6,7 @@
 //-----------------------------------------------------------------------
 
 using System.ComponentModel.DataAnnotations;
+using TestTask_Roman.Constants;
 using TestTask_Roman.Data.Configurations;
 using TestTask_Roman.Data.Enums;
 
@@ -77,7 +78,7 @@ namespace TestTask_Roman.Models
         {
             if (id < 0)
             {
-                results.Add(new ValidationResult("Id cannot be less zero"));
+                results.Add(new ValidationResult(ValidationErrorMessages.IdLessZero));
             }
         }
 
@@ -85,11 +86,11 @@ namespace TestTask_Roman.Models
         {
             if (string.IsNullOrEmpty(firstName))
             {
-                results.Add(new ValidationResult("First name cannot be null or empty"));
+                results.Add(new ValidationResult(ValidationErrorMessages.FirstNameNullOrEmpty));
             }
             else if (firstName.Length > PatientConfiguration.NameMaxLength)
             {
-                results.Add(new ValidationResult($"First name cannot be longer than {PatientConfiguration.NameMaxLength} characters"));
+                results.Add(new ValidationResult(ValidationErrorMessages.FirstNameTooLong + DoctorConfiguration.NameMaxLength));
             }
         }
 
@@ -97,11 +98,11 @@ namespace TestTask_Roman.Models
         {
             if (string.IsNullOrEmpty(lastName))
             {
-                results.Add(new ValidationResult("Last name cannot be null or empty"));
+                results.Add(new ValidationResult(ValidationErrorMessages.LastNameNullOrEmpty));
             }
             else if (lastName.Length > PatientConfiguration.NameMaxLength)
             {
-                results.Add(new ValidationResult($"Last name cannot be longer than {PatientConfiguration.NameMaxLength} characters"));
+                results.Add(new ValidationResult(ValidationErrorMessages.LastNameTooLong + DoctorConfiguration.NameMaxLength));
             }
         }
 
@@ -109,7 +110,7 @@ namespace TestTask_Roman.Models
         {
             if (middleName.Length > PatientConfiguration.NameMaxLength)
             {
-                results.Add(new ValidationResult($"Middle name cannot be longer than {PatientConfiguration.NameMaxLength} characters"));
+                results.Add(new ValidationResult(ValidationErrorMessages.MiddleNameTooLong + DoctorConfiguration.NameMaxLength));
             }
         }
 
@@ -117,11 +118,11 @@ namespace TestTask_Roman.Models
         {
             if (string.IsNullOrEmpty(address))
             {
-                results.Add(new ValidationResult("Address is required"));
+                results.Add(new ValidationResult(ValidationErrorMessages.AddressEmpty));
             }
             else if (address.Length > PatientConfiguration.AddressMaxLength)
             {
-                results.Add(new ValidationResult($"Address cannot be longer than {PatientConfiguration.AddressMaxLength} characters"));
+                results.Add(new ValidationResult(ValidationErrorMessages.AddressTooLong));
             }
         }
 
@@ -129,7 +130,7 @@ namespace TestTask_Roman.Models
         {
             if (birthDate > DateOnly.FromDateTime(DateTime.Now))
             {
-                results.Add(new ValidationResult("Date of birth cannot be in the future"));
+                results.Add(new ValidationResult(ValidationErrorMessages.BirthDateFromFuture));
             }
         }
 
@@ -137,7 +138,7 @@ namespace TestTask_Roman.Models
         {
             if (area <= 0)
             {
-                results.Add(new ValidationResult("Area is not a valid value"));
+                results.Add(new ValidationResult(ValidationErrorMessages.InvalidArea));
             }
         }
 
@@ -145,7 +146,7 @@ namespace TestTask_Roman.Models
         {
             if (!Enum.IsDefined(typeof(Sex), sex))
             {
-                results.Add(new ValidationResult("Sex is not a valid value"));
+                results.Add(new ValidationResult(ValidationErrorMessages.InvalidSex));
             }
         }
     }
