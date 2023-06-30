@@ -71,7 +71,7 @@ namespace TestTask_Roman.Models
         {
             if (id < 0)
             {
-                results.Add(new ValidationResult(ValidationErrorMessages.IdLessZero));
+                results.Add(new ValidationResult(ValidationErrorMessages.InvalidId));
             }
         }
 
