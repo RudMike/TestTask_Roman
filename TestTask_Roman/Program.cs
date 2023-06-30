@@ -74,6 +74,7 @@ namespace TestTask_Roman
             _ = builder.Services.AddScoped<IMapper<PatientRequest, Patient>, PatientRequestToEntityMapper>();
             _ = builder.Services.AddScoped<IReportRepository<DoctorsResponse>, DoctorsRepository>();
             _ = builder.Services.AddScoped<IReportRepository<PatientsResponse>, PatientsRepository>();
+            _ = builder.Services.AddScoped<PatientControllerRequestValidator>();
             _ = builder.Services.AddScoped<DoctorControllerRequestValidator>();
         }
 
