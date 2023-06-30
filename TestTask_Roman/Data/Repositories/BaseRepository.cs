@@ -59,6 +59,8 @@ namespace TestTask_Roman.Data.Repositories
         /// <inheritdoc/>
         public async Task DeleteAsync(TEntity entity, CancellationToken ct = default)
         {
+            ct.ThrowIfCancellationRequested();
+
             if (this.IsEntityDetached(entity))
             {
                 this.dbSet.Attach(entity);
@@ -79,6 +81,8 @@ namespace TestTask_Roman.Data.Repositories
         /// <inheritdoc/>
         public async Task UpdateAsync(TEntity updatedEntity, CancellationToken ct = default)
         {
+            ct.ThrowIfCancellationRequested();
+
             this.DbSet.Update(updatedEntity);
             await Task.CompletedTask;
         }
