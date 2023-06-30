@@ -38,6 +38,11 @@ namespace TestTask_Roman.Constants
         public const string ByDescending = "desc";
 
         /// <summary>
+        /// The name of the ID parameter used in routing.
+        /// </summary>
+        public const string Id = "id";
+
+        /// <summary>
         /// The name of the first name parameter used in routing.
         /// </summary>
         public const string FirstName = "firstname";
