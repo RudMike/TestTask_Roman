@@ -6,6 +6,7 @@
 //-----------------------------------------------------------------------
 
 using System.ComponentModel.DataAnnotations;
+using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using TestTask_Roman.Infrastructure.Exceptions;
 
@@ -46,38 +47,53 @@ namespace TestTask_Roman.Infrastructure.Middleware
 
         private static async Task HandleExceptionAsync(Exception ex, HttpContext context)
         {
-            string? result;
+            int status;
+            string title;
+            string detail;
 
             switch (ex)
             {
                 case BadRequestException restEx:
-                    context.Response.StatusCode = StatusCodes.Status400BadRequest;
-                    result = restEx.Message;
+                    status = StatusCodes.Status400BadRequest;
+                    title = "Bad Request";
+                    detail = restEx.Message;
                     break;
 
                 case DbUpdateException dbEx:
-                    context.Response.StatusCode = StatusCodes.Status500InternalServerError;
-                    result = $"{dbEx.Message} Inner exception: {dbEx.InnerException!.Message}.";
+                    status = StatusCodes.Status500InternalServerError;
+                    title = "Database Update Error";
+                    detail = $"{dbEx.Message} Inner exception: {dbEx.InnerException?.Message}.";
                     break;
 
                 case ValidationException validEx:
-                    context.Response.StatusCode = StatusCodes.Status400BadRequest;
-                    result = $"{validEx.Message}.";
+                    status = StatusCodes.Status400BadRequest;
+                    title = "Validation Error";
+                    detail = validEx.Message;
                     break;
 
                 case OperationCanceledException cancEx:
-                    context.Response.StatusCode = StatusCodes.Status204NoContent;
-                    result = cancEx.Message;
+                    status = StatusCodes.Status204NoContent;
+                    title = "Operation Canceled";
+                    detail = cancEx.Message;
                     break;
 
                 default:
-                    context.Response.StatusCode = StatusCodes.Status500InternalServerError;
-                    result = ex.Message;
+                    status = StatusCodes.Status500InternalServerError;
+                    title = "Internal Server Error";
+                    detail = ex.Message;
                     break;
             }
 
-            context.Response.ContentType = "text/html";
-            await context.Response.WriteAsync(result);
+            var problemDetails = new ProblemDetails
+            {
+                Title = title,
+                Detail = detail,
+                Status = status,
+            };
+
+            context.Response.StatusCode = status;
+            context.Response.ContentType = "application/problem+json";
+            await context.Response.WriteAsJsonAsync(problemDetails);
         }
     }
 }
