@@ -43,7 +43,7 @@ namespace TestTask_Roman.Data.Repositories
                     Id = doctor.Id,
                     FirstName = doctor.FirstName,
                     LastName = doctor.LastName,
-                    MiddleName = doctor.MiddleName,
+                    MiddleName = doctor.MiddleName!,
                     Room = doctor.RoomId ?? 0,
                     Specialization = doctor.Specialization.Title,
                     Area = doctor.AreaId,
@@ -58,7 +58,7 @@ namespace TestTask_Roman.Data.Repositories
             {
                 RoutingConstants.FirstName => doctor => doctor.FirstName,
                 RoutingConstants.LastName => doctor => doctor.LastName,
-                RoutingConstants.MiddleName => doctor => doctor.MiddleName,
+                RoutingConstants.MiddleName => doctor => doctor.MiddleName!,
                 RoutingConstants.Room => doctor => doctor.RoomId!,
                 RoutingConstants.Specialization => doctor => doctor.Specialization,
                 RoutingConstants.Area => doctor => doctor.AreaId!,

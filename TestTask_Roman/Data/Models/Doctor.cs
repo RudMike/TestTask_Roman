@@ -32,7 +32,7 @@ namespace TestTask_Roman.Data.Models
         /// <summary>
         /// Gets or sets the middle name of the doctor.
         /// </summary>
-        public string MiddleName { get; set; } = string.Empty;
+        public string? MiddleName { get; set; }
 
         /// <summary>
         /// Gets or sets the number of the room where the doctor works.

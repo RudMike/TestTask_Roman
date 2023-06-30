@@ -55,7 +55,8 @@ namespace TestTask_Roman.Data.Configurations
 
             _ = builder.Property(patient => patient.MiddleName)
                 .HasColumnName(DbObjectConstants.MiddleName)
-                .HasMaxLength(NameMaxLength);
+                .HasMaxLength(NameMaxLength)
+                .IsRequired(false);
 
             _ = builder.Property(patient => patient.Address)
                 .HasColumnName(DbObjectConstants.Address)

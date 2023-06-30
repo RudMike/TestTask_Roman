@@ -43,7 +43,7 @@ namespace TestTask_Roman.Data.Repositories
                     Address = patient.Address,
                     FirstName = patient.FirstName,
                     LastName = patient.LastName,
-                    MiddleName = patient.MiddleName,
+                    MiddleName = patient.MiddleName!,
                     BirthDate = patient.BirthDate,
                     Sex = patient.Sex.GetDescription(),
                     Area = patient.AreaId ?? 0,
@@ -58,7 +58,7 @@ namespace TestTask_Roman.Data.Repositories
             {
                 RoutingConstants.FirstName => patient => patient.FirstName,
                 RoutingConstants.LastName => patient => patient.LastName,
-                RoutingConstants.MiddleName => patient => patient.MiddleName,
+                RoutingConstants.MiddleName => patient => patient.MiddleName!,
                 RoutingConstants.BirthDate => patient => patient.BirthDate,
                 RoutingConstants.Area => patient => patient.AreaId!,
                 RoutingConstants.Address => patient => patient.Address,
