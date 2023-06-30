@@ -29,6 +29,14 @@ namespace TestTask_Roman.Data.Configurations
             _ = builder.Property(area => area.Id)
                 .HasColumnName(DbObjectConstants.AreaId)
                 .ValueGeneratedNever();
+
+            _ = builder.HasData(
+                new Area { Id = 100, },
+                new Area { Id = 200, },
+                new Area { Id = 300, },
+                new Area { Id = 400, },
+                new Area { Id = 500, },
+                new Area { Id = 600, });
         }
     }
 }

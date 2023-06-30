@@ -28,7 +28,15 @@ namespace TestTask_Roman.Data.Configurations
 
             _ = builder.Property(room => room.Id)
                 .HasColumnName(DbObjectConstants.RoomId)
-                .ValueGeneratedNever();
+            .ValueGeneratedNever();
+
+            _ = builder.HasData(
+                new Room { Id = 10, },
+                new Room { Id = 11, },
+                new Room { Id = 12, },
+                new Room { Id = 13, },
+                new Room { Id = 14, },
+                new Room { Id = 15, });
         }
     }
 }
