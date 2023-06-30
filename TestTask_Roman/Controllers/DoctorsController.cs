@@ -19,7 +19,7 @@ namespace TestTask_Roman.Controllers
     [Route("Doctors")]
     public class DoctorsController : Controller
     {
-        private readonly IReportableService<Doctor, DoctorsResponse, DoctorRequest> doctorService;
+        private readonly IReportService<Doctor, DoctorsResponse, DoctorRequest> doctorService;
         private readonly DoctorControllerRequestValidator requestValidator;
 
         /// <summary>
@@ -28,7 +28,7 @@ namespace TestTask_Roman.Controllers
         /// <param name="doctorService">The service used to interact with doctor entities and generate reports.</param>
         /// <param name="requestValidator">The validator used to validate doctor requests.</param>
         public DoctorsController(
-            IReportableService<Doctor, DoctorsResponse, DoctorRequest> doctorService,
+            IReportService<Doctor, DoctorsResponse, DoctorRequest> doctorService,
             DoctorControllerRequestValidator requestValidator)
         {
             this.doctorService = doctorService;

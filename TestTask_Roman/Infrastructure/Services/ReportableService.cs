@@ -21,7 +21,7 @@ namespace TestTask_Roman.Infrastructure.Services
     /// <typeparam name="TEntity">The type of entity that the service operates on.</typeparam>
     /// <typeparam name="TReport">The type of report that the service generates.</typeparam>
     /// <typeparam name="TRequest">The type of DTOs that are used to create, update, and delete entities.</typeparam>
-    public class ReportableService<TEntity, TReport, TRequest> : BaseService<TEntity, TRequest>, IReportableService<TEntity, TReport, TRequest>
+    public class ReportableService<TEntity, TReport, TRequest> : BaseService<TEntity, TRequest>, IReportService<TEntity, TReport, TRequest>
         where TEntity : class, IEntity
     {
         private readonly IReportRepository<TReport> reportRepository;
