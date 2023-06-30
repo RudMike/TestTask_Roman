@@ -59,10 +59,17 @@ namespace TestTask_Roman.Infrastructure.Middleware
                     context.Response.StatusCode = StatusCodes.Status500InternalServerError;
                     result = $"{dbEx.Message} Inner exception: {dbEx.InnerException!.Message}.";
                     break;
+
                 case ValidationException validEx:
                     context.Response.StatusCode = StatusCodes.Status400BadRequest;
                     result = $"{validEx.Message}.";
                     break;
+
+                case OperationCanceledException cancEx:
+                    context.Response.StatusCode = StatusCodes.Status204NoContent;
+                    result = cancEx.Message;
+                    break;
+
                 default:
                     context.Response.StatusCode = StatusCodes.Status500InternalServerError;
                     result = ex.Message;
