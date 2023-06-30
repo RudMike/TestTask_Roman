@@ -38,9 +38,11 @@ namespace TestTask_Roman.Data.Repositories
         }
 
         /// <inheritdoc/>
-        public async Task AddAsync(TEntity entity, CancellationToken ct = default)
+        public async Task<TEntity> AddAsync(TEntity entity, CancellationToken ct = default)
         {
             await this.DbSet.AddAsync(entity, ct).ConfigureAwait(false);
+
+            return entity;
         }
 
         /// <inheritdoc/>
@@ -79,12 +81,13 @@ namespace TestTask_Roman.Data.Repositories
         }
 
         /// <inheritdoc/>
-        public async Task UpdateAsync(TEntity updatedEntity, CancellationToken ct = default)
+        public Task<TEntity> UpdateAsync(TEntity updatedEntity, CancellationToken ct = default)
         {
             ct.ThrowIfCancellationRequested();
 
             this.DbSet.Update(updatedEntity);
-            await Task.CompletedTask;
+
+            return Task.FromResult(updatedEntity);
         }
 
         private bool IsEntityDetached(TEntity entity)

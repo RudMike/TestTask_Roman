@@ -19,16 +19,16 @@ namespace TestTask_Roman.Data.Repositories
         /// </summary>
         /// <param name="entity">The entity to add.</param>
         /// <param name="ct">A cancellation token that can be used to cancel the operation.</param>
-        /// <returns>A task representing the asynchronous operation.</returns>
-        public Task AddAsync(TEntity entity, CancellationToken ct = default);
+        /// <returns>A task representing the asynchronous operation. The task's result is the newly added entity.</returns>
+        public Task<TEntity> AddAsync(TEntity entity, CancellationToken ct = default);
 
         /// <summary>
         /// Updates an existing entity in the repository.
         /// </summary>
         /// <param name="updatedEntity">The updated entity.</param>
         /// <param name="ct">A cancellation token that can be used to cancel the operation.</param>
-        /// <returns>A task representing the asynchronous operation.</returns>
-        public Task UpdateAsync(TEntity updatedEntity, CancellationToken ct = default);
+        /// <returns>A task representing the asynchronous operation. The task's result is the updated entity.</returns>
+        public Task<TEntity> UpdateAsync(TEntity updatedEntity, CancellationToken ct = default);
 
         /// <summary>
         /// Deletes an existing entity from the repository.

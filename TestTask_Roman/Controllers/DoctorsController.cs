@@ -6,6 +6,7 @@
 //-----------------------------------------------------------------------
 
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.EntityFrameworkCore;
 using TestTask_Roman.Data.Models;
 using TestTask_Roman.Domain;
 using TestTask_Roman.Models;
@@ -98,7 +99,7 @@ namespace TestTask_Roman.Controllers
         /// </summary>
         /// <param name="doctor">The doctor entity to add.</param>
         /// <param name="ct">A cancellation token that can be used to cancel the operation.</param>
-        /// <returns>An HTTP response indicating success or failure.</returns>
+        /// <returns>An HTTP response indicating success or failure, along with the added doctor entity.</returns>
         [HttpPost("Add")]
         public async Task<IActionResult> AddAsync([FromBody] DoctorRequest doctor, CancellationToken ct = default)
         {
@@ -110,11 +111,11 @@ namespace TestTask_Roman.Controllers
                 return validationResult;
             }
 
-            var processedCount = await this.doctorService
+            var updatedEntity = await this.doctorService
                 .AddAsync(doctor, ct)
                 .ConfigureAwait(false);
 
-            return processedCount != 0 ? this.Ok() : this.UnprocessableEntity();
+            return this.Ok(updatedEntity);
         }
 
         /// <summary>
@@ -122,7 +123,7 @@ namespace TestTask_Roman.Controllers
         /// </summary>
         /// <param name="doctor">The doctor entity to update.</param>
         /// <param name="ct">A cancellation token that can be used to cancel the operation.</param>
-        /// <returns>An HTTP response indicating success or failure.</returns>
+        /// <returns>An HTTP response indicating success or failure, along with the edited doctor entity.</returns>
         [HttpPut("Edit")]
         public async Task<IActionResult> EditAsync([FromBody] DoctorRequest doctor, CancellationToken ct = default)
         {
@@ -134,11 +135,11 @@ namespace TestTask_Roman.Controllers
                 return validationResult;
             }
 
-            var processedCount = await this.doctorService
+            var addedEntity = await this.doctorService
                 .UpdateAsync(doctor, ct)
                 .ConfigureAwait(false);
 
-            return processedCount != 0 ? this.Ok() : this.UnprocessableEntity();
+            return this.Ok(addedEntity);
         }
 
         /// <summary>

@@ -50,7 +50,7 @@ namespace TestTask_Roman.Infrastructure.Services
         protected IRepository<TEntity> Repository => this.repository;
 
         /// <inheritdoc/>
-        public async Task<int> AddAsync(TRequest request, CancellationToken ct = default)
+        public async Task<TEntity> AddAsync(TRequest request, CancellationToken ct = default)
         {
             ThrowIfNull(request);
 
@@ -59,8 +59,10 @@ namespace TestTask_Roman.Infrastructure.Services
             await this.Repository.AddAsync(entity, ct)
                 .ConfigureAwait(false);
 
-            return await this.UnitOfWork.SaveAsync(ct)
+            await this.UnitOfWork.SaveAsync(ct)
                 .ConfigureAwait(false);
+
+            return entity;
         }
 
         /// <inheritdoc/>
@@ -94,7 +96,7 @@ namespace TestTask_Roman.Infrastructure.Services
         }
 
         /// <inheritdoc/>
-        public async Task<int> UpdateAsync(TRequest request, CancellationToken ct = default)
+        public async Task<TEntity> UpdateAsync(TRequest request, CancellationToken ct = default)
         {
             ThrowIfNull(request);
 
@@ -103,8 +105,10 @@ namespace TestTask_Roman.Infrastructure.Services
             await this.Repository.UpdateAsync(entity, ct)
                 .ConfigureAwait(false);
 
-            return await this.UnitOfWork.SaveAsync(ct)
-                .ConfigureAwait(false);
+            await this.UnitOfWork.SaveAsync(ct)
+               .ConfigureAwait(false);
+
+            return entity;
         }
 
         private static void ThrowIfNull(TRequest request)

@@ -22,8 +22,8 @@ namespace TestTask_Roman.Domain
         /// </summary>
         /// <param name="request">The DTO that represents the entity to add.</param>
         /// <param name="ct">A cancellation token that can be used to cancel the operation.</param>
-        /// <returns>A task representing the asynchronous operation. The task result contains the number of state entries written to the database.</returns>
-        public Task<int> AddAsync(TRequest request, CancellationToken ct = default);
+        /// <returns>A task representing the asynchronous operation. The task's result is the newly added entity.</returns>
+        public Task<TEntity> AddAsync(TRequest request, CancellationToken ct = default);
 
         /// <summary>
         /// Deletes an entity from the database by its ID.
@@ -54,7 +54,7 @@ namespace TestTask_Roman.Domain
         /// </summary>
         /// <param name="request">The DTO that represents the entity to update.</param>
         /// <param name="ct">A cancellation token that can be used to cancel the operation.</param>
-        /// <returns>A task representing the asynchronous operation. The task result contains the number of state entries written to the database.</returns>
-        public Task<int> UpdateAsync(TRequest request, CancellationToken ct = default);
+        /// <returns>A task representing the asynchronous operation. The task's result is the updated entity.</returns>
+        public Task<TEntity> UpdateAsync(TRequest request, CancellationToken ct = default);
     }
 }
