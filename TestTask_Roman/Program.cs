@@ -67,8 +67,6 @@ namespace TestTask_Roman
             _ = builder.Services.AddScoped<DbContextFactory>();
             _ = builder.Services.AddScoped(typeof(IUnitOfWork<>), typeof(UnitOfWork<>));
             _ = builder.Services.AddScoped(typeof(IRepository<>), typeof(BaseRepository<>));
-            _ = builder.Services.AddScoped(typeof(IDbService<>), typeof(DbBaseService<>));
-            _ = builder.Services.AddScoped(typeof(IReportableDbService<,>), typeof(ReportableDbService<,>));
             _ = builder.Services.AddScoped(typeof(IBaseService<,>), typeof(BaseService<,>));
             _ = builder.Services.AddScoped(typeof(IReportableService<,,>), typeof(ReportableService<,,>));
             _ = builder.Services.AddScoped<IMapper<DoctorRequest, Doctor>, DoctorRequestToEntityMapper>();
