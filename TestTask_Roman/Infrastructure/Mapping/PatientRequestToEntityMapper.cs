@@ -1,5 +1,5 @@
 ﻿//-----------------------------------------------------------------------
-// <copyright file="PacientRequestToEntityMapper.cs" company="RudMike">
+// <copyright file="PatientRequestToEntityMapper.cs" company="RudMike">
 //     Author: Mike Rudnikov
 //     Copyright (c) RudMike. All rights reserved.
 // </copyright>
@@ -13,7 +13,7 @@ namespace TestTask_Roman.Infrastructure.Mapping
     /// <summary>
     /// Maps between a <see cref="PatientRequest"/> object and a <see cref="Patient"/> entity.
     /// </summary>
-    public class PacientRequestToEntityMapper : IMapper<PatientRequest, Patient>
+    public class PatientRequestToEntityMapper : IMapper<PatientRequest, Patient>
     {
         /// <inheritdoc/>
         public Patient Map(PatientRequest from)
