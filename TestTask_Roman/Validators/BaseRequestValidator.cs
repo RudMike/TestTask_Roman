@@ -1,5 +1,5 @@
 ﻿//-----------------------------------------------------------------------
-// <copyright file="ControllerRequestBaseValidator.cs" company="RudMike">
+// <copyright file="BaseRequestValidator.cs" company="RudMike">
 //     Author: Mike Rudnikov
 //     Copyright (c) RudMike. All rights reserved.
 // </copyright>
@@ -15,7 +15,7 @@ namespace TestTask_Roman.Validators
     /// Provides a base class for validating controller request objects.
     /// </summary>
     /// <typeparam name="TRequest">The type of the request object to validate.</typeparam>
-    public abstract class ControllerRequestBaseValidator<TRequest>
+    public abstract class BaseRequestValidator<TRequest>
         where TRequest : class
     {
         /// <summary>

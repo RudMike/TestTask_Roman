@@ -20,7 +20,7 @@ namespace TestTask_Roman.Controllers
     public class PatientsController : Controller
     {
         private readonly IReportService<Patient, PatientsResponse, PatientRequest> patientService;
-        private readonly PatientControllerRequestValidator requestValidator;
+        private readonly PatientRequestValidator requestValidator;
 
         /// <summary>
         /// Initializes a new instance of the <see cref="PatientsController"/> class with the specified patient service and request validator.
@@ -29,7 +29,7 @@ namespace TestTask_Roman.Controllers
         /// <param name="requestValidator">The validator used to validate patient requests.</param>
         public PatientsController(
             IReportService<Patient, PatientsResponse, PatientRequest> patientService,
-            PatientControllerRequestValidator requestValidator)
+            PatientRequestValidator requestValidator)
         {
             this.patientService = patientService;
             this.requestValidator = requestValidator;

@@ -1,5 +1,5 @@
 ﻿//-----------------------------------------------------------------------
-// <copyright file="PatientControllerRequestValidator.cs" company="RudMike">
+// <copyright file="DoctorRequestValidator.cs" company="RudMike">
 //     Author: Mike Rudnikov
 //     Copyright (c) RudMike. All rights reserved.
 // </copyright>
@@ -12,9 +12,9 @@ using TestTask_Roman.Models;
 namespace TestTask_Roman.Validators
 {
     /// <summary>
-    /// Provides validation tools for patient controller requests.
+    /// Provides validation tools for doctor controller requests.
     /// </summary>
-    public class PatientControllerRequestValidator : ControllerRequestBaseValidator<PatientRequest>
+    public class DoctorRequestValidator : BaseRequestValidator<DoctorRequest>
     {
         /// <inheritdoc/>
         protected override ActionResult? ValidateColumnName(string? sortColumn)
@@ -28,9 +28,8 @@ namespace TestTask_Roman.Validators
                 !this.IsEqualIgnoreCase(sortColumn, RoutingConstants.LastName) &&
                 !this.IsEqualIgnoreCase(sortColumn, RoutingConstants.FirstName) &&
                 !this.IsEqualIgnoreCase(sortColumn, RoutingConstants.MiddleName) &&
-                !this.IsEqualIgnoreCase(sortColumn, RoutingConstants.Address) &&
-                !this.IsEqualIgnoreCase(sortColumn, RoutingConstants.BirthDate) &&
-                !this.IsEqualIgnoreCase(sortColumn, RoutingConstants.Sex) &&
+                !this.IsEqualIgnoreCase(sortColumn, RoutingConstants.Room) &&
+                !this.IsEqualIgnoreCase(sortColumn, RoutingConstants.Specialization) &&
                 !this.IsEqualIgnoreCase(sortColumn, RoutingConstants.Area))
             {
                 return new BadRequestObjectResult(ValidationErrorMessages.InvalidSortColumn);
