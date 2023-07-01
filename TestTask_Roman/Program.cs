@@ -11,6 +11,7 @@ using TestTask_Roman.Data.Contexts;
 using TestTask_Roman.Data.Models;
 using TestTask_Roman.Data.Repositories;
 using TestTask_Roman.Domain;
+using TestTask_Roman.Filters;
 using TestTask_Roman.Infrastructure;
 using TestTask_Roman.Infrastructure.Mapping;
 using TestTask_Roman.Infrastructure.Middleware;
@@ -83,6 +84,8 @@ namespace TestTask_Roman
             _ = builder.Services.AddScoped<IReportRepository<PatientsResponse>, PatientsRepository>();
             _ = builder.Services.AddScoped<PatientRequestValidator>();
             _ = builder.Services.AddScoped<DoctorRequestValidator>();
+            _ = builder.Services.AddScoped<PatientRequestValidatorFilter>();
+            _ = builder.Services.AddScoped<DoctorRequestValidatorFilter>();
         }
 
         private static void ConfigureMiddleware(WebApplication app)

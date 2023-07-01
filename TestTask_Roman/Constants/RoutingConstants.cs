@@ -68,6 +68,16 @@ namespace TestTask_Roman.Constants
         public const string Sex = "sex";
 
         /// <summary>
+        /// The name of the sort column parameter used in routing.
+        /// </summary>
+        public const string SortColumn = "sortcolumn";
+
+        /// <summary>
+        /// The name of the sort order parameter used in routing.
+        /// </summary>
+        public const string SortOrder = "sortorder";
+
+        /// <summary>
         /// The name of the specialization parameter used in routing.
         /// </summary>
         public const string Specialization = "specialization";

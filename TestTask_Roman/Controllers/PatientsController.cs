@@ -8,8 +8,8 @@
 using Microsoft.AspNetCore.Mvc;
 using TestTask_Roman.Data.Models;
 using TestTask_Roman.Domain;
+using TestTask_Roman.Filters;
 using TestTask_Roman.Models;
-using TestTask_Roman.Validators;
 
 namespace TestTask_Roman.Controllers
 {
@@ -20,19 +20,14 @@ namespace TestTask_Roman.Controllers
     public class PatientsController : Controller
     {
         private readonly IReportService<Patient, PatientsResponse, PatientRequest> patientService;
-        private readonly PatientRequestValidator requestValidator;
 
         /// <summary>
         /// Initializes a new instance of the <see cref="PatientsController"/> class with the specified patient service and request validator.
         /// </summary>
         /// <param name="patientService">The service used to interact with patient entities and generate reports.</param>
-        /// <param name="requestValidator">The validator used to validate patient requests.</param>
-        public PatientsController(
-            IReportService<Patient, PatientsResponse, PatientRequest> patientService,
-            PatientRequestValidator requestValidator)
+        public PatientsController(IReportService<Patient, PatientsResponse, PatientRequest> patientService)
         {
             this.patientService = patientService;
-            this.requestValidator = requestValidator;
         }
 
         /// <summary>
@@ -47,6 +42,7 @@ namespace TestTask_Roman.Controllers
         /// <param name="ct">A cancellation token that can be used to cancel the operation.</param>
         /// <returns>An HTTP response indicating success or failure, along with an array of patient entities and pagination information.</returns>
         [HttpGet("GetReport")]
+        [ServiceFilter(typeof(PatientRequestValidatorFilter))]
         public async Task<IActionResult> GetReportAsync(
             [FromQuery] string? sortColumn,
             [FromQuery] string? sortOrder,
@@ -54,14 +50,6 @@ namespace TestTask_Roman.Controllers
             [FromQuery] int? pageSize,
             CancellationToken ct = default)
         {
-            var validationResult = this.requestValidator
-                .ValidateRequest(sortColumn, sortOrder, page, pageSize);
-
-            if (validationResult != null)
-            {
-                return validationResult;
-            }
-
             var patients = await this.patientService
                 .GetReportAsync(sortColumn, sortOrder, page, pageSize, ct)
                 .ConfigureAwait(false);
@@ -76,16 +64,9 @@ namespace TestTask_Roman.Controllers
         /// <param name="ct">A cancellation token that can be used to cancel the operation.</param>
         /// <returns>An HTTP response indicating success or failure, along with the patient entity.</returns>
         [HttpGet("GetById/{id}")]
+        [ServiceFilter(typeof(PatientRequestValidatorFilter))]
         public async Task<IActionResult> GetByIdAsync([FromRoute] int id, CancellationToken ct = default)
         {
-            var validationResult = this.requestValidator
-                .ValidateId(id);
-
-            if (validationResult != null)
-            {
-                return validationResult;
-            }
-
             var patient = await this.patientService
                 .GetByIdAsync(id, ct)
                 .ConfigureAwait(false);
@@ -100,16 +81,9 @@ namespace TestTask_Roman.Controllers
         /// <param name="ct">A cancellation token that can be used to cancel the operation.</param>
         /// <returns>An HTTP response indicating success or failure, along with the added patient entity.</returns>
         [HttpPost("Add")]
+        [ServiceFilter(typeof(PatientRequestValidatorFilter))]
         public async Task<IActionResult> AddAsync([FromBody] PatientRequest patient, CancellationToken ct = default)
         {
-            var validationResult = this.requestValidator
-                .ValidateRequest(patient, this.ModelState);
-
-            if (validationResult != null)
-            {
-                return validationResult;
-            }
-
             var addedEntity = await this.patientService
                 .AddAsync(patient, ct)
                 .ConfigureAwait(false);
@@ -124,16 +98,9 @@ namespace TestTask_Roman.Controllers
         /// <param name="ct">A cancellation token that can be used to cancel the operation.</param>
         /// <returns>An HTTP response indicating success or failure, along with the edited patient entity.</returns>
         [HttpPut("Edit")]
+        [ServiceFilter(typeof(PatientRequestValidatorFilter))]
         public async Task<IActionResult> EditAsync([FromBody] PatientRequest patient, CancellationToken ct = default)
         {
-            var validationResult = this.requestValidator
-                .ValidateRequest(patient, this.ModelState);
-
-            if (validationResult != null)
-            {
-                return validationResult;
-            }
-
             var updatedEntity = await this.patientService
                 .UpdateAsync(patient, ct)
                 .ConfigureAwait(false);
@@ -148,16 +115,9 @@ namespace TestTask_Roman.Controllers
         /// <param name="ct">A cancellation token that can be used to cancel the operation.</param>
         /// <returns>An HTTP response indicating success or failure.</returns>
         [HttpDelete("DeleteById/{id}")]
+        [ServiceFilter(typeof(PatientRequestValidatorFilter))]
         public async Task<IActionResult> DeleteAsync([FromRoute] int id, CancellationToken ct = default)
         {
-            var validationResult = this.requestValidator
-                .ValidateId(id);
-
-            if (validationResult != null)
-            {
-                return validationResult;
-            }
-
             _ = await this.patientService
                 .DeleteAsync(id, ct)
                 .ConfigureAwait(false);
