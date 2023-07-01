@@ -61,7 +61,7 @@ namespace TestTask_Roman
 
             builder.Services.AddDbContext<MedicalDbContext>(options =>
             {
-                string connectionStringKey = "MySql";
+                string connectionStringKey = "MsSql";
                 if (Environment.GetEnvironmentVariable("DOTNET_RUNNING_IN_CONTAINER") != null)
                 {
                     connectionStringKey = "DockerSql";
