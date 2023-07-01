@@ -36,6 +36,7 @@ namespace TestTask_Roman
             ConfigureServices(builder);
             var app = builder.Build();
             ConfigureMiddleware(app);
+            CreateDbIfNotExist(app);
             app.Run();
         }
 
@@ -97,6 +98,17 @@ namespace TestTask_Roman
             _ = app.UseHttpsRedirection();
             _ = app.UseAuthorization();
             _ = app.MapControllers();
+        }
+
+        private static void CreateDbIfNotExist(WebApplication webApp)
+        {
+            using (var scope = webApp.Services.CreateScope())
+            {
+                using (var dbContext = scope.ServiceProvider.GetRequiredService<MedicalDbContext>())
+                {
+                    dbContext.Database.EnsureCreated();
+                }
+            }
         }
     }
 }
