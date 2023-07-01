@@ -20,14 +20,14 @@ namespace TestTask_Roman.Domain
         where TEntity : class, IEntity
     {
         /// <summary>
-        /// Retrieves a paged list of <see cref="TReport"/> objects according to specified sorting and paging parameters.
+        /// Retrieves a paged list of <typeparamref name="TReport"/> objects according to specified sorting and paging parameters.
         /// </summary>
         /// <param name="sortColumn">The column to sort the results by. Uses default value if <see langword="null"/>.</param>
         /// <param name="sortOrder">The order in which to sort the results. Uses default value if <see langword="null"/>.</param>
         /// <param name="page">The page number to retrieve, or <c>null</c> to use default value.</param>
         /// <param name="pageSize">The number of items to include per page. Uses default value if <see langword="null"/>.</param>
         /// <param name="ct">A cancellation token that can be used to cancel the operation.</param>
-        /// <returns>A <see cref="Task{TResult}"/> representing the asynchronous operation that returns a paged list of <see cref="TReport"/> objects.</returns>
+        /// <returns>A <see cref="Task{TResult}"/> representing the asynchronous operation that returns a paged list of <typeparamref name="TReport"/> objects.</returns>
         public Task<PagedList<TReport>> GetReportAsync(string? sortColumn, string? sortOrder, int? page, int? pageSize, CancellationToken ct = default);
     }
 }

@@ -100,13 +100,9 @@ namespace TestTask_Roman
 
         private static void CreateDbIfNotExist(WebApplication webApp)
         {
-            using (var scope = webApp.Services.CreateScope())
-            {
-                using (var dbContext = scope.ServiceProvider.GetRequiredService<MedicalDbContext>())
-                {
-                    dbContext.Database.EnsureCreated();
-                }
-            }
+            using var scope = webApp.Services.CreateScope();
+            using var dbContext = scope.ServiceProvider.GetRequiredService<MedicalDbContext>();
+            dbContext.Database.EnsureCreated();
         }
     }
 }
