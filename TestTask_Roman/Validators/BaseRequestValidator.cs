@@ -152,7 +152,7 @@ namespace TestTask_Roman.Validators
         /// <returns><see langword="true"/> if the strings are equal, ignoring case; otherwise, <see langword="false"/>.</returns>
         protected bool IsEqualIgnoreCase(string? value1, string? value2)
         {
-            return string.Compare(value1, value2, StringComparison.OrdinalIgnoreCase) == 0;
+            return string.Equals(value1, value2, StringComparison.OrdinalIgnoreCase);
         }
 
         /// <summary>

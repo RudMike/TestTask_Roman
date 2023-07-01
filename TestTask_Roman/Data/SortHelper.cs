@@ -26,7 +26,7 @@ namespace TestTask_Roman.Data
         /// <returns>The sorted query.</returns>
         public static IQueryable<TEntity> ApplySort(IQueryable<TEntity> query, Expression<Func<TEntity, object>> keySelector, string? sortOrder)
         {
-            if (string.Compare(sortOrder, RoutingConstants.ByDescending, StringComparison.OrdinalIgnoreCase) == 0)
+            if (string.Equals(sortOrder, RoutingConstants.ByDescending, StringComparison.OrdinalIgnoreCase))
             {
                 return query.OrderByDescending(keySelector);
             }

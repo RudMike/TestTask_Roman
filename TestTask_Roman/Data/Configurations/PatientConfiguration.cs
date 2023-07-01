@@ -75,7 +75,7 @@ namespace TestTask_Roman.Data.Configurations
                 enumValue => enumValue.GetDescription(),
                 stringValue => Enum.GetValues(typeof(Sex))
                                    .Cast<Sex>()
-                                   .First(sex => string.Compare(sex.GetDescription(), stringValue, StringComparison.OrdinalIgnoreCase) == 0));
+                                   .First(sex => string.Equals(sex.GetDescription(), stringValue, StringComparison.OrdinalIgnoreCase)));
 
             _ = builder.Property(patient => patient.Sex)
                 .HasColumnName(DbObjectConstants.Sex)
