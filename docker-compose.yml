@@ -1,0 +1,22 @@
+version: '3.4'
+
+services:
+  testtask_roman:
+    image: ${DOCKER_REGISTRY-}testtaskroman
+    build:
+      context: .
+      dockerfile: TestTask_Roman/Dockerfile
+    depends_on:
+      - mssql-2022
+      
+  mssql-2022:
+    image: "mcr.microsoft.com/mssql/server:2022-latest"
+    ports:
+       - "1433:1433"
+    environment:
+       - MSSQL_SA_PASSWORD=s*cr*tK*y2s*cr*t
+       - ACCEPT_EULA=Y
+    volumes:
+       - ./data:/var/opt/mssql/TestTask_Roman/data
+       - ./log:/var/opt/mssql/TestTask_Roman/log
+    restart: always
