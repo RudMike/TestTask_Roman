@@ -88,13 +88,8 @@ namespace TestTask_Roman
         private static void ConfigureMiddleware(WebApplication app)
         {
             _ = app.UseMiddleware<ExceptionHandlerMiddleware>();
-
-            if (app.Environment.IsDevelopment())
-            {
-                _ = app.UseSwagger();
-                _ = app.UseSwaggerUI();
-            }
-
+            _ = app.UseSwagger();
+            _ = app.UseSwaggerUI();
             _ = app.UseHttpsRedirection();
             _ = app.UseAuthorization();
             _ = app.MapControllers();
